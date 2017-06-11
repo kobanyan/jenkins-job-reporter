@@ -1,0 +1,29 @@
+apply plugin: 'groovy'
+
+repositories {
+  mavenCentral()
+  maven {
+    url 'http://repo.jenkins-ci.org/releases/'
+  }
+}
+
+sourceSets {
+  main {
+    groovy {
+      srcDirs = ['src']
+    }
+  }
+
+  test {
+    groovy {
+      srcDirs = ['test']
+    }
+  }
+}
+
+dependencies {
+  compile 'org.codehaus.groovy:groovy-all:2.4.11'
+  compile 'org.jenkins-ci.main:jenkins-core:2.64'
+  compile 'com.cloudbees:groovy-cps:1.14'
+  compileOnly 'javax.servlet:javax.servlet-api:3.1.0'
+}
