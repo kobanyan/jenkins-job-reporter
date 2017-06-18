@@ -1,8 +1,8 @@
-package com.github.kobanyan.jenkins_job_reporter.handlers
+package com.github.kobanyan.jenkins_job_reporter.reporters
 
 import jenkins.model.BuildDiscarderProperty
 
-class BuildDiscarderPropertyHandler implements PropertyHandler<BuildDiscarderProperty> {
+class BuildDiscarderPropertyReporter implements PropertyReporter<BuildDiscarderProperty> {
 
   @Override
   def report(BuildDiscarderProperty property) {

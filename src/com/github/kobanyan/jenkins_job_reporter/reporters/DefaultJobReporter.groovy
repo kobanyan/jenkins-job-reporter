@@ -1,8 +1,8 @@
-package com.github.kobanyan.jenkins_job_reporter.handlers
+package com.github.kobanyan.jenkins_job_reporter.reporters
 
 import hudson.model.Job
 
-class DefaultJobHandler implements JobHandler {
+class DefaultJobReporter implements JobReporter {
 
   @Override
   def report(Job<?, ?> job) {

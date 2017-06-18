@@ -1,8 +1,8 @@
 package com.github.kobanyan.jenkins_job_reporter
 
-import com.github.kobanyan.jenkins_job_reporter.handlers.DefaultJobHandler
-import com.github.kobanyan.jenkins_job_reporter.handlers.Handler
-import com.github.kobanyan.jenkins_job_reporter.handlers.PropertyHandler
+import com.github.kobanyan.jenkins_job_reporter.reporters.DefaultJobReporter
+import com.github.kobanyan.jenkins_job_reporter.reporters.Reporter
+import com.github.kobanyan.jenkins_job_reporter.reporters.PropertyReporter
 
 import hudson.model.Job
 import jenkins.model.Jenkins
@@ -11,8 +11,8 @@ class JenkinsJobReporter implements Serializable {
 
   List<Class<?>> includes
   List<Class<?>> excludes
-  List<Handler> jobHandlers = [new DefaultJobHandler()]
-  List<PropertyHandler<?>> propertyHandlers
+  List<Reporter> jobHandlers = [new DefaultJobReporter()]
+  List<PropertyReporter<?>> propertyHandlers
 
   def report() {
     def result = []
@@ -51,11 +51,11 @@ class JenkinsJobReporter implements Serializable {
   private def reportJob(Job job) {
     def report = [:]
     def jobMap = [:]
-    for (Handler jobHandler : jobHandlers) {
+    for (Reporter jobHandler : jobHandlers) {
       jobMap.putAll(jobHandler.report(job))
     }
     report['job'] = jobMap
-    for (PropertyHandler propertyHandler : propertyHandlers) {
+    for (PropertyReporter propertyHandler : propertyHandlers) {
       def propertyClass = propertyHandler.getJobPropertyClass()
       def property = job.getProperty(propertyClass)
       def obj = propertyHandler.report(property)

@@ -1,9 +1,9 @@
-package com.github.kobanyan.jenkins_job_reporter.handlers
+package com.github.kobanyan.jenkins_job_reporter.reporters
 
 import hudson.model.Job
 import jenkins.model.ParameterizedJobMixIn.ParameterizedJob
 
-class ParameterizedJobHandler implements JobHandler {
+class ParameterizedJobReporter implements JobReporter {
 
   @Override
   def report(Job<?, ?> job) {

@@ -1,9 +1,9 @@
-package com.github.kobanyan.jenkins_job_reporter.handlers
+package com.github.kobanyan.jenkins_job_reporter.reporters
 
 import hudson.model.ParameterDefinition
 import hudson.model.ParametersDefinitionProperty
 
-class ParametersDefinitionPropertyHandler implements PropertyHandler<ParametersDefinitionProperty> {
+class ParametersDefinitionPropertyReporter implements PropertyReporter<ParametersDefinitionProperty> {
 
   @Override
   def report(ParametersDefinitionProperty prop) {
