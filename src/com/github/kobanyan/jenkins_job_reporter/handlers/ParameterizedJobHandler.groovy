@@ -6,10 +6,10 @@ import jenkins.model.ParameterizedJobMixIn.ParameterizedJob
 class ParameterizedJobHandler implements JobHandler {
 
   @Override
-  public Map<String, String> toMap(Job<?, ?> job) {
+  def report(Job<?, ?> job) {
     def key = 'parameterized'
     if (job instanceof ParameterizedJob) {
-      def paramJob = (ParameterizedJob<?, ?>) job
+      ParameterizedJob<?, ?> paramJob = (ParameterizedJob<?, ?>) job
       return [
         "${key}": paramJob.parameterized
       ]

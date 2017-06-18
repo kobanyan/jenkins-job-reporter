@@ -5,7 +5,7 @@ import hudson.model.Job
 class DefaultJobHandler implements JobHandler {
 
   @Override
-  Map<String, String> toMap(Job<?, ?> job) {
+  def report(Job<?, ?> job) {
     [
       fullName: job.fullName,
       class: job.class.name,

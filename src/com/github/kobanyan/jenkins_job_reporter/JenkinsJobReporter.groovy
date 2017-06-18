@@ -52,14 +52,14 @@ class JenkinsJobReporter implements Serializable {
     def report = [:]
     def jobMap = [:]
     for (Handler jobHandler : jobHandlers) {
-      jobMap.putAll(jobHandler.toMap(job))
+      jobMap.putAll(jobHandler.report(job))
     }
     report['job'] = jobMap
     for (PropertyHandler propertyHandler : propertyHandlers) {
       def propertyClass = propertyHandler.getJobPropertyClass()
       def property = job.getProperty(propertyClass)
-      def map = propertyHandler.toMap(property)
-      report[propertyClass.simpleName] = map
+      def obj = propertyHandler.report(property)
+      report[propertyClass.simpleName] = obj
     }
     return report
   }

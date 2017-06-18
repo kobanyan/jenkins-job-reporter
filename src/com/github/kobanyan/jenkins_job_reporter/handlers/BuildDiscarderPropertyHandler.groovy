@@ -5,7 +5,7 @@ import jenkins.model.BuildDiscarderProperty
 class BuildDiscarderPropertyHandler implements PropertyHandler<BuildDiscarderProperty> {
 
   @Override
-  Map<String, String> toMap(BuildDiscarderProperty property) {
+  def report(BuildDiscarderProperty property) {
     if (property && property.strategy) {
       [
         'daysToKeep': Utils.nullToEmpty(property.strategy.daysToKeepStr),
