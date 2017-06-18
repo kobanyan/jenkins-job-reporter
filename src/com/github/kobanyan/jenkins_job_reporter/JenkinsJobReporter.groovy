@@ -11,7 +11,7 @@ class JenkinsJobReporter implements Serializable {
 
   List<Class<?>> includes
   List<Class<?>> excludes
-  Handler jobHandler = new DefaultJobHandler()
+  List<Handler> jobHandlers = [new DefaultJobHandler()]
   List<PropertyHandler<?>> propertyHandlers
 
   def report() {
@@ -50,9 +50,11 @@ class JenkinsJobReporter implements Serializable {
 
   private def reportJob(Job job) {
     def report = [:]
-    if (jobHandler) {
-      report['job'] = jobHandler.toMap(job)
+    def jobMap = [:]
+    for (Handler jobHandler : jobHandlers) {
+      jobMap.putAll(jobHandler.toMap(job))
     }
+    report['job'] = jobMap
     for (PropertyHandler propertyHandler : propertyHandlers) {
       def propertyClass = propertyHandler.getJobPropertyClass()
       def property = job.getProperty(propertyClass)
