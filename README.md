@@ -29,10 +29,9 @@ node() {
       propertyHandlers: propertyHandlers,
     )
     def report = reporter.report()
-    def json = groovy.json.JsonOutput.toJson(report)
     stage('Archive Report') {
       def file = 'report.json'
-      writeFile file: file, text: json
+      writeFile file: file, text: report
       archiveArtifacts artifacts: file
     }
   }

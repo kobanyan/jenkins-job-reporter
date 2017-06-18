@@ -1,8 +1,10 @@
 package com.github.kobanyan.jenkins_job_reporter
 
 import com.github.kobanyan.jenkins_job_reporter.reporters.DefaultJobReporter
-import com.github.kobanyan.jenkins_job_reporter.reporters.Reporter
 import com.github.kobanyan.jenkins_job_reporter.reporters.PropertyReporter
+import com.github.kobanyan.jenkins_job_reporter.reporters.Reporter
+import com.github.kobanyan.jenkins_job_reporter.styles.JsonReportFormatter
+import com.github.kobanyan.jenkins_job_reporter.styles.ReportFormatter
 
 import hudson.model.Job
 import jenkins.model.Jenkins
@@ -13,15 +15,16 @@ class JenkinsJobReporter implements Serializable {
   List<Class<?>> excludes
   List<Reporter> jobHandlers = [new DefaultJobReporter()]
   List<PropertyReporter<?>> propertyHandlers
+  ReportFormatter formatter = new JsonReportFormatter()
 
   def report() {
-    def result = []
+    def report = []
     for (Job job : Jenkins.instance.getAllItems(Job.class)) {
       if (isInclude(job) && !isExclude(job)) {
-        result.add(reportJob(job))
+        report.add(reportJob(job))
       }
     }
-    return result
+    return formatter.format(report)
   }
 
   private def isInclude(Job job) {
