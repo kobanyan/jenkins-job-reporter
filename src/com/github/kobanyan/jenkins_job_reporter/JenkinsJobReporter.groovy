@@ -3,8 +3,8 @@ package com.github.kobanyan.jenkins_job_reporter
 import com.github.kobanyan.jenkins_job_reporter.reporters.DefaultJobReporter
 import com.github.kobanyan.jenkins_job_reporter.reporters.PropertyReporter
 import com.github.kobanyan.jenkins_job_reporter.reporters.Reporter
-import com.github.kobanyan.jenkins_job_reporter.styles.JsonReportFormatter
-import com.github.kobanyan.jenkins_job_reporter.styles.ReportFormatter
+import com.github.kobanyan.jenkins_job_reporter.formatters.JsonReportFormatter
+import com.github.kobanyan.jenkins_job_reporter.formatters.ReportFormatter
 
 import hudson.model.Job
 import jenkins.model.Jenkins
