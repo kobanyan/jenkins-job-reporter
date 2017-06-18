@@ -5,4 +5,5 @@ import hudson.model.JobProperty
 
 interface PropertyReporter<P extends JobProperty<Job<?,?>>> extends Reporter<P> {
   Class<P> getJobPropertyClass()
+  String getName()
 }

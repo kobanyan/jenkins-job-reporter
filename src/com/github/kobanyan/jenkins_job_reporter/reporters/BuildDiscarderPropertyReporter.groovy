@@ -28,4 +28,9 @@ class BuildDiscarderPropertyReporter implements PropertyReporter<BuildDiscarderP
     return BuildDiscarderProperty.class
   }
 
+  @Override
+  String getName() {
+    'buildDiscarder'
+  }
+
 }

@@ -23,5 +23,10 @@ class ParametersDefinitionPropertyReporter implements PropertyReporter<Parameter
   Class<ParametersDefinitionProperty> getJobPropertyClass() {
     return ParametersDefinitionProperty.class;
   }
+  
+  @Override
+  String getName() {
+    'parametersDefinition'
+  }
 
 }

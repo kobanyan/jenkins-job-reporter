@@ -62,7 +62,7 @@ class JenkinsJobReporter implements Serializable {
       def propertyClass = propertyHandler.getJobPropertyClass()
       def property = job.getProperty(propertyClass)
       def obj = propertyHandler.report(property)
-      report[propertyClass.simpleName] = obj
+      report[propertyHandler.name] = obj
     }
     return report
   }
