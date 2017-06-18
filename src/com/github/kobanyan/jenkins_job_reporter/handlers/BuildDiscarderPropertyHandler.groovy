@@ -1,9 +1,5 @@
 package com.github.kobanyan.jenkins_job_reporter.handlers
 
-import java.util.Map
-
-import com.cloudbees.groovy.cps.NonCPS
-
 import jenkins.model.BuildDiscarderProperty
 
 class BuildDiscarderPropertyHandler implements PropertyHandler<BuildDiscarderProperty> {

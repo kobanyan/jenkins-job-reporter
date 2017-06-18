@@ -1,11 +1,8 @@
 package com.github.kobanyan.jenkins_job_reporter.handlers
 
-import java.util.Map
-
 import hudson.model.Job
-import hudson.triggers.TimerTrigger
 
-class DefaultJobHandler implements Handler<Job<?, ?>> {
+class DefaultJobHandler implements JobHandler {
 
   @Override
   Map<String, String> toMap(Job<?, ?> job) {
