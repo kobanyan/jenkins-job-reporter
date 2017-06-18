@@ -7,15 +7,14 @@ class ParameterizedJobReporter implements JobReporter {
 
   @Override
   def report(Job<?, ?> job) {
-    def key = 'parameterized'
     if (job instanceof ParameterizedJob) {
       ParameterizedJob<?, ?> paramJob = (ParameterizedJob<?, ?>) job
       return [
-        "${key}": paramJob.parameterized
+        parameterized: paramJob.parameterized
       ]
     } else {
       return [
-        "${key}": ''
+        parameterized: ''
       ]
     }
   }
